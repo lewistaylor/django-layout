@@ -89,7 +89,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
                                 "django.core.context_processors.media",
                                 "django.core.context_processors.static",
                                 "django.core.context_processors.request",
-                                "django.contrib.messages.context_processors.messages"
+                                "django.contrib.messages.context_processors.messages",  
+                                'cms.context_processors.media',
+                                'sekizai.context_processors.sekizai',
 )
 
 
@@ -102,7 +104,11 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware', 
+    'cms.middleware.multilingual.MultilingualURLMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
 ]
 
 
@@ -113,7 +119,23 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.admin',
+    'django.contrib.admin',
+    'cms', 
+    'mptt', 
+    'menus', 
+    'south', 
+    'sekizai',
+    
+    'cms.plugins.file',
+    'cms.plugins.flash',
+    'cms.plugins.googlemap',
+    'cms.plugins.link',
+    'cms.plugins.picture',
+    'cms.plugins.snippet',
+    'cms.plugins.teaser',
+    'cms.plugins.text',
+    'cms.plugins.video',
+    'cms.plugins.twitter',
 ]
 
 
@@ -121,7 +143,7 @@ INSTALLED_APPS = [
 #### LOGGING ####
 
 import logging
-logger = logging.getLogger('django')
+logger = logging.getLogger('facebook')
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 file_handler = logging.FileHandler(os.path.join(PROJECT_DIR, "../logs"))
@@ -129,3 +151,11 @@ file_handler.setFormatter(formatter)
 file_handler.setLevel(logging.DEBUG)
 logger.addHandler(file_handler)
 
+
+
+
+#### CMS ####
+
+CMS_TEMPLATES = (
+    ('template_1.html', 'Template One'),
+)
