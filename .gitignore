@@ -26,3 +26,4 @@ parts/
 *.mo
 **/media/uploads/
 **/static/
+*.egg-info

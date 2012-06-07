@@ -1,7 +1,11 @@
-sed -i "s/project_name = .*$/project_name = $1/g" buildout.cfg
-rm -rf bin/ parts/ develop-eggs/ eggs/ bootstrap.py
-wget http://www.buildout.org/bootstrap.py
+sed -i "s/PROJECT_NAME/$1/g" buildout.cfg;
+sed -i "s/project_name = .*$/project_name = $1/g" buildout.cfg;
+sed -i "s/PROJECT_NAME/$1/g" src/$1/settings/*.py;
+rm src/*.egg-info;
+mv src/site src/$1;
+rm -rf bin/ parts/ develop-eggs/ eggs/ bootstrap.py;
+wget http://www.buildout.org/bootstrap.py;
 python bootstrap.py; 
-./bin/buildout -o; 
+./bin/buildout -o;
 ./bin/django syncdb --noinput;
 ./bin/django loaddata auth.json
