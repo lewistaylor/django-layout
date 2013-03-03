@@ -22,17 +22,17 @@ DEVELOPMENT_SERVERS = (
 
 
 if socket.gethostname() in PRODUCTION_SERVERS:
-    from PROJECT_NAME.settings.production import *
+    from project.settings.production import *
 elif socket.gethostname() in STAGING_SERVERS:
-    from PROJECT_NAME.settings.staging import *
+    from project.settings.staging import *
 elif socket.gethostname() in DEVELOPMENT_SERVERS:
-    from PROJECT_NAME.settings.development import *
+    from project.settings.development import *
 elif 'runserver' in sys.argv:
-    from PROJECT_NAME.settings.local import *
+    from project.settings.local import *
 elif 'test' in sys.argv or [arg for arg in sys.argv if 'nosetests' in arg]:
-    from PROJECT_NAME.settings.test import *
+    from project.settings.test import *
 else:
-    from PROJECT_NAME.settings.production import *
+    from project.settings.production import *
     
     
     

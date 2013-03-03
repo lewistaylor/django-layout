@@ -15,9 +15,9 @@ MANAGERS = ADMINS
 
 SITE_ID = 1
 
-SECRET_KEY = '' # will cause an error unless sorted
+SECRET_KEY = ''  # will cause an error unless sorted
 
-ROOT_URLCONF = 'PROJECT_NAME.urls'
+ROOT_URLCONF = 'project.urls'
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -36,12 +36,12 @@ STATICFILES_DIRS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': os.path.join(PROJECT_DIR, 'database.db'),                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': os.path.join(PROJECT_DIR, 'database.db'),  # Or path to database file if using sqlite3.
+        'USER': '',  # Not used with sqlite3.
+        'PASSWORD': '',  # Not used with sqlite3.
+        'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',  # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -75,7 +75,7 @@ if os.path.exists(os.path.join(PROJECT_DIR, "locale")):
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    #'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_DIRS = (
@@ -114,7 +114,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #'django.contrib.admin',
+    # 'django.contrib.admin',
 ]
 
 

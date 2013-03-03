@@ -1,12 +1,7 @@
 mv src/site src/$1;
 rm src/*.egg-info;
 rm -rf bin/ parts/ develop-eggs/ eggs/ bootstrap.py;
-sed -i "s/PROJECT_NAME/$1/g" buildout.cfg;
-sed -i "s/PROJECT_NAME/$1/g" setup.py;
-sed -i "s/PROJECT_NAME/$1/g" src/manage.py;
-sed -i "s/project_name = .*$/project_name = $1/g" buildout.cfg;
-sed -i "s/PROJECT_NAME/$1/g" src/$1/settings/*.py;
-wget http://www.buildout.org/bootstrap.py;
+wget http://downloads.buildout.org/2/bootstrap.py;
 python bootstrap.py; 
 ./bin/buildout -o;
 ./bin/django syncdb --noinput;
