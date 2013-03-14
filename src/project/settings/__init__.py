@@ -27,13 +27,12 @@ elif socket.gethostname() in STAGING_SERVERS:
     from project.settings.staging import *
 elif socket.gethostname() in DEVELOPMENT_SERVERS:
     from project.settings.development import *
-elif 'runserver' in sys.argv:
+elif [i for i in ('runserver', 'syncdb', 'flush') if i in sys.argv]:
     from project.settings.local import *
-elif 'test' in sys.argv or [arg for arg in sys.argv if 'nosetests' in arg]:
+elif [i for i in ('test', 'nosetests') if i in sys.argv]:
     from project.settings.test import *
 else:
-    from project.settings.production import *
-    
+    from project.settings.production import * 
     
     
 #### MEDIA & URL RESOLVING ####
