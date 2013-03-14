@@ -1,8 +1,7 @@
-rm src/*.egg-info;
 rm -rf bin/ parts/ develop-eggs/ eggs/;
 python bootstrap.py; 
 ./bin/buildout;
-rm src/*.egg-info
+rm -rf src/*.egg-info;
 ./bin/django syncdb --noinput;
 ./bin/django migrate;
 ./bin/django loaddata auth.json
